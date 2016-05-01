@@ -42,21 +42,27 @@ namespace snake {
     private:
         float speed;
         float resetSpeed;
-        Location initialLocation;
-        int size;
-        std::list<Location> locations;
-        Direction headDirection;
-        Uint32 previousTime;
-        void updatePosition();
-        void setAppleLocation();
+
         int wW;
         int wH;
-        Location foodLocation;
-        bool needFood;
-        bool paused;
+
         int score;
         int windowOffset;
+
+        bool needFood;
+        bool paused;
         bool gameOver;
+
+        Location initialLocation;
+        Location foodLocation;
+        std::list<Location> locations;
+        Direction headDirection;
+
+        Uint32 previousTime;
+
+        void updatePosition();
+        void setAppleLocation();
+
     };
 }
 

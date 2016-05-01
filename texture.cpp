@@ -57,7 +57,7 @@ namespace snake {
         SDL_Rect renderQuad = { x, y, mWidth, mHeight };
 
         //Set clip rendering dimensions
-        if( clip != NULL ) {
+        if( clip != nullptr ) {
             renderQuad.w = clip->w;
             renderQuad.h = clip->h;
         }
@@ -67,18 +67,6 @@ namespace snake {
 
     }
 
-    void Texture::setBlendMode(SDL_BlendMode blending) {
-
-    }
-
-    void Texture::setAlpha(Uint8 alpha) {
-
-    }
-
-
-    void Texture::setColor(Uint8 red, Uint8 green, Uint8 blue) {
-
-    }
 
     int Texture::getWidth() {
         return mWidth;
@@ -87,6 +75,20 @@ namespace snake {
     int Texture::getHeight() {
         return mHeight;
     }
+
+    // To be implemented
+    void Texture::setBlendMode(SDL_BlendMode blending) {
+
+    }
+
+    void Texture::setAlpha(Uint8 alpha) {
+
+    }
+
+    void Texture::setColor(Uint8 red, Uint8 green, Uint8 blue) {
+
+    }
+
 
 
 }

@@ -23,14 +23,6 @@ namespace snake {
         initialLocation = Location {xPos, yPos};
         windowOffset = wOffset;
 
-
-        if (size % 2 != 0){
-            std::cerr << "Fixing size" << std::endl;
-            size++;
-        }
-
-
-
         reset();
 
     }
