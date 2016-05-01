@@ -13,3 +13,6 @@ $ cmake CMakeLists.txt
 $ make
 $ ./bin/sdl_snake
 ```
+
+
+<img width="1919" alt="sdl2_snake" src="https://cloud.githubusercontent.com/assets/386629/14940468/89d223e0-0f2b-11e6-9ad4-2401dacede20.png">
