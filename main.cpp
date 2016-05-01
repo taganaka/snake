@@ -81,16 +81,15 @@ int main() {
 
     snake::Texture gameOverTexture = snake::Texture(renderer, gFont);
     bool gameOver = false;
+    bool isRunning = true;
 
-
-    while (true){
+    while (isRunning){
         fps.update();
-        if (SDL_PollEvent(&event)) {
+        while (SDL_PollEvent(&event) != 0) {
             if (event.type == SDL_QUIT) {
+                isRunning = false;
                 break;
             }
-            if (event.type == SDL_KEYDOWN && (event.key.keysym.sym == SDLK_ESCAPE || event.key.keysym.sym == SDLK_q))
-                break;
             if (event.type == SDL_KEYDOWN){
                 switch (event.key.keysym.sym){
                     case SDLK_UP:
@@ -110,6 +109,10 @@ int main() {
                         snake.pauseToggle();
                         if (gameOver)
                             gameOver = false;
+                        break;
+                    case SDLK_ESCAPE:
+                    case SDLK_q:
+                        isRunning = false;
                         break;
                     default:break;
                 }
