@@ -169,6 +169,7 @@ namespace snake {
 
         locations = std::list<Location>();
         locations.push_front(initialLocation);
+        locations.push_back({initialLocation.x, initialLocation.y - 10});
         setAppleLocation();
 
     }
