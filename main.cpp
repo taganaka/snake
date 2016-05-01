@@ -36,7 +36,7 @@ int main() {
     int screen_w = PLAY_AREA_WIDTH + (BORDER_SIZE * 2);
     int screen_h = PLAY_AREA_HEIGHT + BORDER_SIZE + MARGIN_TOP;
 
-    SDL_Window *window = SDL_CreateWindow("SDL Retro Snake",
+    SDL_Window *window = SDL_CreateWindow("SDL2 Retro Snake",
                                           SDL_WINDOWPOS_UNDEFINED,
                                           SDL_WINDOWPOS_UNDEFINED,
                                           screen_w,
