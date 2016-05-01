@@ -7,6 +7,14 @@
 #include "headers.h"
 
 namespace snake {
+    int rand_range(int min, int max){
+        std::random_device rd; // obtain a random number from hardware
+        std::mt19937 eng(rd()); // seed the generator
+        std::uniform_int_distribution<> distribution(min, max); // define the range
+        return distribution(eng);
+
+    }
+
     Snake::Snake(int xPos,
                  int yPos,
                  float initialSpeed,
@@ -54,6 +62,8 @@ namespace snake {
 
     void Snake::render(SDL_Renderer *target) {
 
+        updatePosition();
+
         SDL_SetRenderDrawColor(target, 47, 76, 10, 255);
         SDL_Rect r;
         for (std::list<Location>::const_iterator it = locations.begin(), end = locations.end(); it != end; ++it) {
@@ -67,7 +77,6 @@ namespace snake {
         r.x = foodLocation.x;
         r.y = foodLocation.y;
         SDL_RenderFillRect(target, &r);
-        updatePosition();
     }
 
     void Snake::updatePosition() {
@@ -100,7 +109,7 @@ namespace snake {
         if (next.x == foodLocation.x && next.y == foodLocation.y){
             score += std::ceil(1 * speed);
             needFood = true;
-            speed += 0.2;
+            speed += 0.15;
         } else {
             locations.pop_back();
         }
@@ -130,16 +139,12 @@ namespace snake {
     void Snake::setAppleLocation() {
         if (!needFood)
             return;
-        std::random_device rd; // obtain a random number from hardware
-        std::mt19937 eng(rd()); // seed the generator
-        std::uniform_int_distribution<> distribution_x(10, wW - 10 ); // define the range
-        std::uniform_int_distribution<> distribution_y(windowOffset, wH - 10 ); // define the range
 
-        int x = distribution_x(eng);
+        int x = rand_range(10, wW - 10);
         if (x % 10 != 0)
             x -= (x % 10);
 
-        int y = distribution_y(eng);
+        int y = rand_range(windowOffset, wH - 10);
         if (y % 10 != 0)
             y -= (y % 10);
 
@@ -172,10 +177,6 @@ namespace snake {
         locations.push_back({initialLocation.x, initialLocation.y - 10});
         setAppleLocation();
 
-    }
-
-    bool Snake::isPaused() {
-        return paused;
     }
 
     int Snake::getScore() {

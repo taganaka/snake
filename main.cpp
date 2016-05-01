@@ -5,7 +5,7 @@
 #include <iomanip>
 
 const int PLAY_AREA_WIDTH = 450;
-const int PLAY_AREA_HEIGHT = 450;
+const int PLAY_AREA_HEIGHT = 350;
 const int BORDER_SIZE = 10;
 const int MARGIN_TOP  = 60;
 

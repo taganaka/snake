@@ -35,7 +35,6 @@ namespace snake {
         void pauseToggle();
         void render(SDL_Renderer *target);
         bool isGameOver();
-        bool isPaused();
         void reset();
         int getScore();
 
