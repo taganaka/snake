@@ -47,12 +47,10 @@ int main() {
         return EXIT_FAILURE;
     }
 
+    snake::Fps fps(60);
+
     SDL_Renderer *renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
     SDL_Event event;
-
-
-
-    snake::Fps fps(60);
 
     vector<SDL_Rect> border_points = vector<SDL_Rect>();
     border_points.push_back({0, MARGIN_TOP, BORDER_SIZE, screen_h});
@@ -170,7 +168,6 @@ int main() {
     gameOverTexture.free();
     TTF_Quit();
     SDL_Quit();
-
-
+    
     return EXIT_SUCCESS;
 }
