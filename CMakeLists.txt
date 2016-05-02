@@ -6,7 +6,7 @@ project(sdl_snake)
 
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 -Wall")
 
-set(SOURCE_FILES main.cpp fps.h fps.cpp headers.h snake.h snake.cpp texture.cpp texture.h)
+set(SOURCE_FILES main.cpp fps.h fps.cpp headers.h snake.h snake.cpp texture.cpp texture.h resources/fonts/nokiafc22.h)
 add_executable(sdl_snake ${SOURCE_FILES})
 
 INCLUDE(FindPkgConfig)

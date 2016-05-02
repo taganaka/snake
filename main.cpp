@@ -1,4 +1,5 @@
 #include "headers.h"
+#include "resources/fonts/nokiafc22.h"
 #include <iostream>
 #include <vector>
 #include <sstream>
@@ -8,8 +9,6 @@ const int PLAY_AREA_WIDTH = 450;
 const int PLAY_AREA_HEIGHT = 350;
 const int BORDER_SIZE = 10;
 const int MARGIN_TOP  = 60;
-
-const char *FONT_PATH = "./resources/fonts/nokiafc22.ttf";
 
 using namespace std;
 
@@ -26,7 +25,9 @@ int main() {
         return EXIT_FAILURE;
     }
 
-    gFont = TTF_OpenFont(FONT_PATH, 14);
+    SDL_RWops *rw = SDL_RWFromConstMem(resources_fonts_nokiafc22_ttf, resources_fonts_nokiafc22_ttf_len);
+    gFont = TTF_OpenFontRW(rw, 1, 14);
+
     if (gFont == nullptr){
         cerr << "TTF Not Available " << TTF_GetError() << endl;
         return EXIT_FAILURE;
@@ -49,7 +50,7 @@ int main() {
 
     snake::Fps fps(60);
 
-    SDL_Renderer *renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
+    SDL_Renderer *renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
     SDL_Event event;
 
     vector<SDL_Rect> border_points = vector<SDL_Rect>();
@@ -58,11 +59,11 @@ int main() {
     border_points.push_back({screen_w - BORDER_SIZE, MARGIN_TOP, BORDER_SIZE, screen_h});
     border_points.push_back({0, screen_h - BORDER_SIZE, screen_w, BORDER_SIZE});
 
-    int initial_x_pos = (PLAY_AREA_HEIGHT / 2);
-    initial_x_pos -= initial_x_pos % 10;
+    int initial_x_pos = (PLAY_AREA_WIDTH / 2);
+    initial_x_pos = 10*((initial_x_pos + 9)/10);
 
-    int initial_y_pos = (PLAY_AREA_WIDTH / 2);
-    initial_y_pos -= initial_y_pos % 10;
+    int initial_y_pos = (PLAY_AREA_HEIGHT / 2);
+    initial_y_pos = 10*((initial_y_pos + 9)/10);
 
     snake::Snake snake = snake::Snake(initial_x_pos,
                                       initial_y_pos,
@@ -166,8 +167,9 @@ int main() {
     scoreTexture.free();
     highScoreTexture.free();
     gameOverTexture.free();
+    TTF_CloseFont(gFont);
     TTF_Quit();
     SDL_Quit();
-    
+
     return EXIT_SUCCESS;
 }
