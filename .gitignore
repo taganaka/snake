@@ -31,5 +31,6 @@
 .DS_Store
 bin/*
 CMakeFiles/
+*.cmake
 CMakeCache.txt
 Makefile
