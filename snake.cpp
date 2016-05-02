@@ -139,14 +139,30 @@ namespace snake {
     void Snake::setAppleLocation() {
         if (!needFood)
             return;
+        int x;
+        int y;
 
-        int x = rand_range(10, wW - 10);
-        if (x % 10 != 0)
-            x -= (x % 10);
+        while(true){
 
-        int y = rand_range(windowOffset, wH - 10);
-        if (y % 10 != 0)
-            y -= (y % 10);
+            x = rand_range(10, wW - 10);
+            if (x % 10 != 0)
+                x -= (x % 10);
+
+            y = rand_range(windowOffset, wH - 10);
+            if (y % 10 != 0)
+                y -= (y % 10);
+
+            bool allowed = true;
+            for (std::list<Location>::const_iterator it = locations.begin(), end = locations.end(); it != end; ++it) {
+                if ((*it).x == x && (*it).y == y){
+                    allowed = false;
+                    break;
+                }
+            }
+            if (allowed)
+                break;
+        }
+
 
         foodLocation.x = x;
         foodLocation.y = y;
