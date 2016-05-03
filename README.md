@@ -9,9 +9,10 @@ My first deeep dive into casual gaming programming using C++ and SDL2
 
 ```
 $ brew install sdl2 sdl2_image sdl2_ttf
-$ cmake CMakeLists.txt
+$ cd build
+$ cmake ..
 $ make
-$ ./bin/sdl_snake
+$ ../bin/sdl_snake
 ```
 
 
